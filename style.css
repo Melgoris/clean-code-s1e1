@@ -165,4 +165,8 @@
   overflow: hidden;   
   right: -1px;
 }
+.header__figure{
+  padding: 0;
+  margin: 0;
+}
 /*fix*/

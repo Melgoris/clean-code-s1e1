@@ -147,3 +147,12 @@ ul li.editMode input[type=text] {
 ul li.editMode label {
   display:none;
 }
+/*fix*/
+.hide{
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;   
+  right: -1px;
+}
+/*fix*/

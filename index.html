@@ -15,7 +15,7 @@
     >
   </head>
 
-  <body>
+  <body class="body">
     <header class="header">
       <h1 class="header__title hide">Todo App</h1>
       <figure>
@@ -42,23 +42,23 @@
         <div class="todo-app__task-wrapper">
           <input 
             id="new-task" 
-            class="todo-app__task-input todo-app__add-task"
+            class="input todo-app__task-input todo-app__add-task"
             type="text"
           >
-          <button class="todo-app__btn">Add</button>
+          <button class="button todo-app__btn">Add</button>
         </div>
       </section>
 
       <section class="todo-app__todo">
-        <h2>Todo</h2>
+        <h2 class="todo-app__section-title">Todo</h2>
         <ul class="todo-app__task-lists">
           <li class="todo-app__task-list">
             <article class="todo-app__item">
-              <input class="todo-app__checkbox-input" type="checkbox">
+              <input class="input todo-app__checkbox-input" type="checkbox">
               <label class="todo-app__task-label">Pay Bills</label>
-              <input type="text" class="todo-app__task-input">
-              <button class="todo-app__btn">Edit</button>
-              <button class="todo-app__btn-delete">
+              <input type="text" class="input todo-app__task-input">
+              <button class="button todo-app__btn">Edit</button>
+              <button class="button todo-app__btn-delete">
                 <img 
                   src="./remove.svg" 
                   alt="Remove"
@@ -70,15 +70,15 @@
 
           <li class="todo-app__task-list todo-app__task-list--edit" class="todo-app__edit-list">
             <article class="todo-app__item">
-              <input class="todo-app__checkbox-input" type="checkbox">
+              <input class="input todo-app__checkbox-input" type="checkbox">
               <label class="todo-app__task-label todo-app__task-label--edit">Go Shopping</label>
               <input
                 type="text" 
                 value="Go Shopping" 
-                class="todo-app__task-input todo-app__task-input--edit"
+                class="input todo-app__task-input todo-app__task-input--edit"
               >
-              <button class="todo-app__btn">Save</button>
-              <button class="todo-app__btn-delete">
+              <button class="button todo-app__btn">Save</button>
+              <button class="button todo-app__btn-delete">
               <img 
                 src="./remove.svg" 
                 alt="Remove"
@@ -91,15 +91,15 @@
       </section>
 
       <section class="todo-app__completed">
-        <h2>Completed</h2>
+        <h2 class="todo-app__section-title">Completed</h2>
         <ul class="todo-app__task-lists todo-app__task-lists--complite">
           <li class="todo-app__task-list" >
             <article class="todo-app__item">
-              <input class="todo-app__checkbox-input" type="checkbox" checked>
+              <input class="input todo-app__checkbox-input" type="checkbox" checked>
               <label class="todo-app__task-label">See the Doctor</label>
-              <input type="text" class="todo-app__task-input">
-              <button class="todo-app__btn">Edit</button>
-              <button class="todo-app__btn-delete">
+              <input type="text" class="input todo-app__task-input">
+              <button class="button todo-app__btn">Edit</button>
+              <button class="button todo-app__btn-delete">
               <img 
                 src="./remove.svg" 
                 alt="Remove"

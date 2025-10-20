@@ -1,5 +1,5 @@
 /* Basic Style */
-body {
+.body {
   background-color: #f8f8f8;
   color: #333;
   font-family: Lato, sans-serif;
@@ -39,15 +39,15 @@ body {
   margin: 0;
   padding: 0px;
 }
-li, 
-h3 {
+.todo-app__task-list, 
+.todo-app__section-title {
   list-style: none;
 }
-input,
-button{
+.input,
+.button{
   outline: none;
 }
-button {
+.button {
   background: none;
   border: 0px;
   color: #888;
@@ -56,11 +56,11 @@ button {
   font-family: Lato, sans-serif;
   cursor: pointer;
 }
-button:hover {
+.button:hover {
   color: #3a3a3a;
 }
 /* Heading */
-h2,
+.todo-app__section-title,
 .todo-app__new-task-label {
   color: #333;
   font-weight: 700;
@@ -148,7 +148,7 @@ h2,
   width: 224px;
 }
 
-todo-app__task-label--edit {
+.todo-app__task-label--edit {
   display: none;
 }
 /*fix*/

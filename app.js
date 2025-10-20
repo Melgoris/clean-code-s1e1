@@ -10,50 +10,59 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".todo-app__task-lists");//ul of #incompleteTasks
+var completedTasksHolder=document.querySelector(".todo-app__task-lists--complite");//completed-tasks
 
 
 //New task list item
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
+    listItem.classList.add("todo-app__task-list")
+
+    var article = document.createElement("article")
+    article.classList.add("todo-app__item")
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
     //label
+    checkBox.classList.add("input","todo-app__checkbox-input")
     var label=document.createElement("label");//label
     //input (text)
+    label.classList.add("todo-app__task-label")
     var editInput=document.createElement("input");//text
     //button.edit
+    editInput.classList.add("input", "todo-app__task-input", "todo-app__task-input--saved")
     var editButton=document.createElement("button");//edit button
-
+    editButton.classList.add("button", "todo-app__btn")
     //button.delete
     var deleteButton=document.createElement("button");//delete button
+    deleteButton.classList.add("button", "todo-app__btn-delete")
     var deleteButtonImg=document.createElement("img");//delete button image
-
+    deleteButtonImg.classList.add("todo-app__delete-image")
     label.innerText=taskString;
-    label.className='task';
+    // label.className='task';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    // editInput.className="task";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    // editButton.className="edit";
 
-    deleteButton.className="delete";
+    // deleteButton.className="delete";
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
 
     //and appending.
-    listItem.appendChild(checkBox);
-    listItem.appendChild(label);
-    listItem.appendChild(editInput);
-    listItem.appendChild(editButton);
-    listItem.appendChild(deleteButton);
+    article.appendChild(checkBox);
+    article.appendChild(label);
+    article.appendChild(editInput);
+    article.appendChild(editButton);
+    article.appendChild(deleteButton);
+    listItem.appendChild(article)
     return listItem;
 }
 
@@ -79,13 +88,13 @@ var editTask=function(){
     console.log("Edit Task...");
     console.log("Change 'edit' to 'save'");
 
-
-    var listItem=this.parentNode;
-
+    var list=this.parentNode;
+    var listItem = list.parentNode
+console.log(listItem,"listItem");
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
-    var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("editMode");
+    var editBtn=listItem.querySelector(".todo-app__btn");
+    var containsClass=listItem.classList.contains("todo-app__task-list--edit");
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -99,7 +108,10 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    editInput.classList.toggle("todo-app__task-input--edit")
+    editInput.classList.toggle("todo-app__task-input--saved")
+    label.classList.toggle("todo-app__task-label--edit")
+    listItem.classList.toggle("todo-app__task-list--edit");
 };
 
 
@@ -108,9 +120,11 @@ var deleteTask=function(){
     console.log("Delete Task...");
 
     var listItem=this.parentNode;
-    var ul=listItem.parentNode;
+    var li = listItem.parentNode;
+    var ul=li.parentNode;
+    //  console.log(ul,"ul");
     //Remove the parent list item from the ul.
-    ul.removeChild(listItem);
+    ul.removeChild(li);
 
 }
 
@@ -120,7 +134,10 @@ var taskCompleted=function(){
     console.log("Complete Task...");
 
     //Append the task list item to the #completed-tasks
-    var listItem=this.parentNode;
+    var list = this.parentNode
+    var listItem=list.parentNode;
+    var label = listItem.querySelector(".todo-app__task-label");
+    if (label) label.classList.add("todo-app__task-label--complited");
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
 
@@ -132,7 +149,10 @@ var taskIncomplete=function(){
 //Mark task as incomplete.
     //When the checkbox is unchecked
     //Append the task list item to the #incompleteTasks.
-    var listItem=this.parentNode;
+    var list = this.parentNode; 
+    var listItem = list.parentNode;
+    var label = listItem.querySelector(".todo-app__task-label");
+    if (label) label.classList.remove("todo-app__task-label--complited");
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }
@@ -156,8 +176,8 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
 //select ListItems children
     var checkBox=taskListItem.querySelector("input[type=checkbox]");
-    var editButton=taskListItem.querySelector("button.edit");
-    var deleteButton=taskListItem.querySelector("button.delete");
+    var editButton=taskListItem.querySelector(".todo-app__btn");
+    var deleteButton=taskListItem.querySelector(".todo-app__btn-delete");
 
 
     //Bind editTask to edit button.
